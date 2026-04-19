@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专业维修团队 - 添键工业自动化</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+:root {
+    --primary: #1e293b;
+    --accent: #f59e0b;
+    --accent2: #3b82f6;
+    --text-dark: #1e293b;
+    --text-mid: #475569;
+    --text-light: #64748b;
+    --card-bg: #ffffff;
+    --section-bg: #f1f5f9;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font);
+    background: var(--section-bg);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+.hero {
+    width: 100vw;
+    min-height: 62vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(ellipse at 20% 30%, rgba(59,130,246,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(245,158,11,0.12) 0%, transparent 50%),
+        linear-gradient(160deg, #0f172a 0%, #1e3a5f 45%, #0f2027 100%);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    animation: grid-flow 20s linear infinite;
+}
+
+@keyframes grid-flow {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(48px, 48px); }
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(1px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1280px;
+    padding: 52px 48px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-brand {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.hero-logo {
+    height: 64px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    filter: brightness(1.1);
+}
+
+.hero-title {
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+    margin-bottom: 8px;
+}
+
+.hero-title i {
+    color: var(--accent);
+    margin-right: 10px;
+    animation: spin-slow 8s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(245,158,11,0.6));
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 3px;
+}
+
+.dashboard-grid {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    backdrop-filter: blur(16px);
+    overflow: hidden;
+    width: 100%;
+    max-width: 900px;
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    position: relative;
+}
+
+.dashboard-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+}
+
+.dash-stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20px;
+    gap: 4px;
+}
+
+.dash-icon {
+    font-size: 1.4rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+
+.dash-number {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 900;
+    color: #ffd700;
+    letter-spacing: -1px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    text-shadow:
+        0 0 20px rgba(255,215,0,0.5),
+        0 0 40px rgba(255,215,0,0.3);
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        text-shadow:
+            0 0 20px rgba(255,215,0,0.5),
+            0 0 40px rgba(255,215,0,0.3);
+    }
+    50% {
+        text-shadow:
+            0 0 30px rgba(255,215,0,0.8),
+            0 0 60px rgba(255,215,0,0.5);
+    }
+}
+
+.dash-number span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255,215,0,0.75);
+    letter-spacing: 0;
+}
+
+.dash-unit {
+    font-size: 1.1rem;
+    color: rgba(255,215,0,0.75);
+    font-weight: 600;
+}
+
+.dash-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.dash-divider {
+    width: 1px;
+    height: 64px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+}
+
+.carousel-section {
+    position: relative;
+    z-index: 10;
+    max-width: 1600px;
+    margin: -110px auto 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 24px;
+    padding: 56px 80px 48px;
+    box-shadow:
+        0 24px 64px rgba(0,0,0,0.18),
+        0 4px 12px rgba(0,0,0,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+    border-radius: 16px;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-content {
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 80px;
+    padding: 8px 4px 16px;
+}
+
+.slide-photo {
+    width: 480px;
+    min-width: 420px;
+    height: 600px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 18px;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.25),
+        0 0 0 1px rgba(0,0,0,0.05);
+    flex-shrink: 0;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.slide-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.slide-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    opacity: 0;
+    transform: translateX(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    padding-top: 8px;
+    max-width: 900px;
+}
+
+.slide-content.show-info .slide-info {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-name {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.slide-name::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    border-radius: 2px;
+}
+
+.slide-title {
+    font-size: 1.8rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.slide-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 26px;
+    border-radius: 999px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    color: #1d4ed8;
+    border: 1px solid rgba(59,130,246,0.2);
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(59,130,246,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    animation: badge-shine 3s infinite;
+}
+
+@keyframes badge-shine {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+}
+
+.badge i {
+    font-size: 0.9rem;
+    color: #3b82f6;
+}
+
+.slide-details {
+    font-size: 1.45rem;
+    line-height: 2.1;
+    color: var(--text-mid);
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-left: 4px solid var(--accent);
+    padding: 24px 28px;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    position: relative;
+}
+
+.slide-details::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent), transparent);
+}
+
+.slide-stats {
+    display: flex;
+    gap: 60px;
+    margin-top: 8px;
+}
+
+.slide-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.slide-stat-number {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+.slide-stat-label {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-top: 6px;
+}
+
+.footer {
+    text-align: center;
+    padding: 32px 0 24px;
+    color: var(--text-light);
+    font-size: 0.875rem;
+    margin-top: 40px;
+}
+
+.autoplay-progress {
+    width: 100%;
+    height: 3px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 32px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+@media (max-width: 900px) {
+    .hero-content { padding: 40px 24px 52px; }
+    .dashboard-grid { flex-wrap: wrap; max-width: 100%; }
+    .dash-stat { min-width: 45%; padding: 20px 16px; }
+    .dash-divider { display: none; }
+    .dash-number { font-size: 2rem; }
+    .carousel-section { margin: -60px 16px 0; padding: 40px 24px 36px; }
+    .slide-content { flex-direction: column; align-items: center; gap: 32px; }
+    .slide-photo { width: 100%; max-width: 340px; height: 420px; }
+    .slide-info { transform: translateY(16px); max-width: 100%; }
+    .slide-content.show-info .slide-info { transform: translateY(0); }
+    .slide-name { font-size: 2.5rem; }
+    .slide-title { font-size: 1.2rem; }
+    .badge { font-size: 0.9rem; padding: 8px 16px; }
+    .slide-details { font-size: 1rem; line-height: 1.8; padding: 16px 20px; }
+    .slide-stat-number { font-size: 2rem; }
+}
+
+@media (max-width: 540px) {
+    .hero-brand { flex-direction: column; text-align: center; gap: 16px; }
+    .hero-logo { height: 48px; }
+    .hero-title { font-size: 1.3rem; }
+    .hero-subtitle { font-size: 0.85rem; }
+    .dash-stat { min-width: 100%; padding: 16px 12px; }
+    .dash-number { font-size: 1.8rem; }
+    .dash-label { font-size: 0.7rem; }
+    .carousel-section { margin: -40px 10px 0; padding: 32px 16px 28px; }
+    .slide-photo { max-width: 100%; height: 320px; }
+    .slide-name { font-size: 1.8rem; }
+    .slide-title { font-size: 1rem; }
+    .badge { font-size: 0.75rem; padding: 6px 12px; gap: 4px; }
+    .badge i { font-size: 0.7rem; }
+    .slide-details { font-size: 0.9rem; line-height: 1.7; padding: 14px 16px; }
+    .slide-stats { gap: 32px; }
+    .slide-stat-number { font-size: 1.6rem; }
+    .slide-stat-label { font-size: 0.8rem; }
+}
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-brand">
+                <img src="images/ScreenShot_2026-03-23_174610_389.png" alt="添键工业自动化" class="hero-logo">
+                <div>
+                    <h1 class="hero-title"><i class="fas fa-cogs"></i> 淄博添键工业自动化</h1>
+                    <p class="hero-subtitle">专业团队 · 值得信赖 · 服务至上</p>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dash-stat">
+                    <div class="dash-icon"><i class="fas fa-wrench"></i></div>
+                    <div class="dash-number" id="total-repairs-count">0</div>
+                    <div class="dash-unit">次</div>
+                    <div class="dash-label">累计维修总量</div>
+                </div>
+                <div class="dash-divider"></div>
+                <div class="dash-stat">
+                    <div class="dash-icon"><i class="fas fa-building"></i></div>
+                    <div class="dash-number">500<span>+</span></div>
+                    <div class="dash-label">服务企业</div>
+                </div>
+                <div class="dash-divider"></div>
+                <div class="dash-stat">
+                    <div class="dash-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="dash-number">2<span>小时</span></div>
+                    <div class="dash-label">平均响应时间</div>
+                </div>
+                <div class="dash-divider"></div>
+                <div class="dash-stat">
+                    <div class="dash-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="dash-number">99<span>%</span></div>
+                    <div class="dash-label">客户好评率</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel-slide" id="carousel-slide"></div>
+        </div>
+        <div class="autoplay-progress">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 添键工业自动化 | 值得信赖的维修专家</p>
+    </footer>
+
+    <script>
+const employees = [
+    {id: 0, name: "昝友峰", photo: "images/employees/昝友峰.jfif", repairCount: 2000, specialty: "公司创始人 · 技术总监", description: "淄博添键工业自动化创始人，从事工业设备维修行业20余年。带领团队为数百家企业提供专业的设备维修与技术支持服务，积累了丰富的行业经验和客户资源。以技术创新和优质服务为核心，致力于打造行业领先的维修服务团队。", experience: "20年+", badges: ["战略管理", "技术创新", "团队领导", "客户资源"]},
+    {id: 2, name: "李师傅", photo: "images/employees/李师傅.jfif", repairCount: 1420, specialty: "机械维修专家", description: "拥有12年机械设备维修经验，精通各类机械传动系统、液压系统的维护与保养。对精密机械加工设备有深入研究，能够快速定位并解决复杂机械故障。", experience: "12年", badges: ["CNC机床维修", "液压系统排查", "精密传动系统", "机械故障诊断"]},
+    {id: 7, name: "蔡师傅", photo: "images/employees/蔡师傅.jfif", repairCount: 1480, specialty: "自动化控制专家", description: "从事工业自动化控制系统维修14年，精通PLC编程、伺服系统调试、触摸屏组态等。擅长解决复杂的自动化设备故障，多次为客户优化生产线控制系统，提升生产效率。", experience: "14年", badges: ["PLC编程", "伺服系统调试", "触摸屏组态", "生产线优化"]},
+    {id: 1, name: "张师傅", photo: "images/employees/张师傅.jfif", repairCount: 1580, specialty: "电气维修专家", description: "从事电气维修工作15年，精通各类工业电气设备的故障诊断与维修。擅长PLC编程、变频器调试、电机维护等。曾成功处理多起重大设备故障，为客户挽回巨大经济损失。", experience: "15年", badges: ["FANUC系统专家", "变频器调试", "电机维护", "高压配电"]},
+    {id: 3, name: "周师傅", photo: "images/employees/周师傅.jfif", repairCount: 1350, specialty: "自动化设备专家", description: "专注于工业自动化设备维修10年，熟悉各类自动化生产线、机器人系统的调试与维护。在智能制造领域有丰富的实战经验，多次参与大型自动化项目的技术支持。", experience: "10年", badges: ["机器人系统", "自动化生产线", "智能制造", "技术支持"]},
+    {id: 4, name: "孙师傅", photo: "images/employees/孙师傅.jfif", repairCount: 1280, specialty: "液压系统专家", description: "液压系统维修领域资深工程师，拥有13年从业经验。精通液压泵、液压阀、液压缸等核心部件的维修与调试。曾为多家大型企业提供液压系统改造与优化方案。", experience: "13年", badges: ["液压泵维修", "液压阀调试", "液压缸检修", "系统改造优化"]},
+    {id: 5, name: "徐师傅", photo: "images/employees/徐师傅.jfif", repairCount: 1190, specialty: "电气维修工程师", description: "电气维修领域经验丰富，擅长高低压配电系统、工业控制系统的故障排查与维修。持有高级电工证书，多次获得客户好评，以专业技术和优质服务赢得信赖。", experience: "11年", badges: ["高低压配电", "工业控制系统", "高级电工认证", "故障排查"]},
+    {id: 6, name: "董师傅", photo: "images/employees/董师傅.jfif", repairCount: 1150, specialty: "机械维修工程师", description: "机械设备维修专家，从业9年。精通各类机床、压力机、注塑机等设备的维修保养。注重细节，工作认真负责，能够为客户提供全方位的设备维护解决方案。", experience: "9年", badges: ["机床维保", "压力机检修", "注塑机维护", "设备保养"]}
+];
+
+const BADGE_ICONS = {"default": "fa-tag", "PLC": "fa-microchip", "CNC": "fa-industry", "液压": "fa-tint", "电气": "fa-bolt", "机械": "fa-cogs", "变频": "fa-sliders-h", "FANUC": "fa-robot", "伺服": "fa-sync", "生产线": "fa-layer-group", "机器人": "fa-robot", "配电": "fa-plug", "系统": "fa-sitemap"};
+
+function getBadgeIcon(label) {
+    for (const [key, icon] of Object.entries(BADGE_ICONS)) {
+        if (label.includes(key)) return icon;
+    }
+    return BADGE_ICONS.default;
+}
+
+let currentSlide = 0, autoPlayTimer = null, showInfoTimer = null, progressInterval = null;
+
+function renderCarousel() {
+    const carouselSlide = document.getElementById('carousel-slide');
+    employees.forEach((employee, index) => {
+        const badgesHTML = (employee.badges || []).map(b => `<span class="badge"><i class="fas ${getBadgeIcon(b)}"></i>${b}</span>`).join('');
+        const slide = document.createElement('div');
+        slide.className = 'slide-content';
+        slide.innerHTML = `<img src="${employee.photo}" alt="${employee.name}" class="slide-photo" onerror="this.src='https://via.placeholder.com/480x600/1e293b/ffffff?text=${encodeURIComponent(employee.name)}'"><div class="slide-info"><h2 class="slide-name">${employee.name}</h2><p class="slide-title">${employee.specialty}</p><div class="slide-badges">${badgesHTML}</div><div class="slide-details">${employee.description}</div><div class="slide-stats"><div class="slide-stat"><span class="slide-stat-number">${employee.repairCount.toLocaleString()}</span><span class="slide-stat-label">累计维修次数</span></div><div class="slide-stat"><span class="slide-stat-number">${employee.experience}</span><span class="slide-stat-label">从业经验</span></div></div></div>`;
+        carouselSlide.appendChild(slide);
+    });
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    const carouselSlide = document.getElementById('carousel-slide');
+    const slides = document.querySelectorAll('.slide-content');
+    const progressFill = document.getElementById('progress-fill');
+    slides.forEach(slide => slide.classList.remove('show-info'));
+    carouselSlide.style.transform = `translateX(-${currentSlide * 100}%)`;
+    if (progressInterval) clearInterval(progressInterval);
+    progressFill.style.width = '0%';
+    let progress = 0;
+    progressInterval = setInterval(() => {
+        progress += 0.0833;
+        progressFill.style.width = progress + '%';
+        if (progress >= 100) clearInterval(progressInterval);
+    }, 100);
+    clearTimeout(showInfoTimer);
+    showInfoTimer = setTimeout(() => { slides[currentSlide].classList.add('show-info'); }, 600);
+    resetAutoPlay();
+}
+
+function nextSlide() { goToSlide((currentSlide + 1) % employees.length); }
+function startAutoPlay() { autoPlayTimer = setInterval(nextSlide, 12000); }
+function resetAutoPlay() { clearInterval(autoPlayTimer); startAutoPlay(); }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const totalRepairs = employees.reduce((sum, emp) => sum + emp.repairCount, 0);
+    const el = document.getElementById('total-repairs-count');
+    let current = 0;
+    const increment = totalRepairs / 80;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= totalRepairs) { el.textContent = totalRepairs.toLocaleString(); clearInterval(timer); }
+        else { el.textContent = Math.round(current).toLocaleString(); }
+    }, 20);
+    renderCarousel();
+    setTimeout(() => { const first = document.querySelector('.slide-content'); if (first) first.classList.add('show-info'); }, 900);
+    startAutoPlay();
+});
+    </script>
+</body>
+</html>
